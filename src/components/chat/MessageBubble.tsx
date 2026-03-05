@@ -55,6 +55,10 @@ function MessageBubble({ message }: Props) {
         {message.content && (
         <ReactMarkdown
           components={{
+            p({ children }) {
+                return <Box component="div">{children}</Box>;
+            },
+            
             code({ inline, className, children }: any) {
               const match = /language-(\w+)/.exec(className || "");
               const codeString = String(children).replace(/\n$/, "");
@@ -80,16 +84,6 @@ function MessageBubble({ message }: Props) {
                       >
                       <ContentCopyIcon fontSize="small" />
                       </IconButton>
-                    {/* <ContentCopyIcon
-                      onClick={handleCopy}
-                      sx={{
-                        position: "absolute",
-                        top: 8,
-                        right: 8,
-                        cursor: "pointer",
-                        color: "#fff",
-                      }}
-                    /> */}
                   </Tooltip>
                   <SyntaxHighlighter
                     style={vscDarkPlus}
