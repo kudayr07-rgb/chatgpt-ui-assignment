@@ -7,7 +7,7 @@ import chatRoutes from '../routes/chat';
 
 dotenv.config();
 
-const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
+const PORT = parseInt(process.env.PORT || "3000", 10);
 const app =express();
 
 app.use(cors());
