@@ -13,8 +13,11 @@ const app =express();
 app.use(cors());
 app.use(express.json());
 
-// app.use('/api/chat', require(chatRoutes));
-app.use('/api/chat', chatRoutes);
+app.get("/", (req, res) => {
+  res.send("ChatGPT Backend API is running 🚀");
+});
+
+app.use("/api/chat", chatRoutes);
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is running on port ${PORT}`);
