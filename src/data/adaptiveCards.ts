@@ -424,5 +424,26 @@ export const adaptiveCardTemplates = {
         data: { action: 'acknowledge' }
       }
     ]
-  }
+  },
+
+  meeting: {
+  type: "AdaptiveCard",
+  version: "1.5",
+  body: [
+    {
+      type: "TextBlock",
+      text: "Upcoming Meeting",
+      weight: "Bolder",
+      size: "Medium"
+    },
+    {
+      type: "FactSet",
+      facts: [
+        { title: "Title:", value: "Sprint Planning" },
+        { title: "Time:", value: "3:00 PM" },
+        { title: "Location:", value: "Zoom" }
+      ]
+    }
+  ]
+}
 };

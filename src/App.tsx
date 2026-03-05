@@ -1,6 +1,4 @@
 import ChatLayout from "./components/chat/ChatLayout";
-import {ThemeProvider, createTheme, CssBaseline } from "@mui/material";
-import { useState } from "react";
 
 type Props = {
   toggleTheme: () => void;

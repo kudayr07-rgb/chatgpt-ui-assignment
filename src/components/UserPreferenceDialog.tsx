@@ -17,11 +17,9 @@ import {
   TextField,
   Box,
   Typography,
-  Divider,
-  Chip
+  Divider
 } from '@mui/material';
 import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
-import { useTheme } from '@mui/material/styles';
 import { usePreferences } from '../context/UserPreferenceContext';
 import type { UserPreferences } from '../context/UserPreferenceContext';
 
@@ -31,8 +29,6 @@ interface UserPreferencesDialogProps {
 }
 
 export default function UserPreferencesDialog({ open, onClose }: UserPreferencesDialogProps) {
-  const theme = useTheme();
-  
     const { preferences, setPreferences } = usePreferences();
     const [localPreferences, setLocalPreferences] = useState<UserPreferences>(preferences);
 

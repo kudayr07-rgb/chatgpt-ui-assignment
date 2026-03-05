@@ -76,9 +76,6 @@ export const ChatProvider = ({ children }: { children: React.ReactNode }) => {
 
   const messages = activeConversation?.messages || [];
 
-  const intervalRef = useRef(null);
-  const indexRef = useRef(0);
-
   const updateMessages = (updater: (msgs: Message[]) => Message[]) => {
     setConversations(prev =>
       prev.map(conv => {
@@ -106,7 +103,8 @@ export const ChatProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const newChat = () => {
-    const newConversation = {
+    // const newConversation = {
+    const newConversation: Conversation = {
     id: crypto.randomUUID(),
     title: "New Chat",
     messages: [

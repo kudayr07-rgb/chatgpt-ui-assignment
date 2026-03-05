@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Box, TextField, IconButton } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { useChat } from "../../context/ChatContext";
@@ -40,8 +40,6 @@ export default function ChatInput() {
         backgroundColor: theme.palette.background.default,
         p: 3,
       }}
-      role="region"
-      aria-label="Message input"
     >
       <Box
         className="chat-input-container"
@@ -142,7 +140,6 @@ export default function ChatInput() {
             mt: 2,
             fontSize: "12px",
           }}
-          role="note"
         >
           ChatGPT can make mistakes. Check important info.
         </Typography>

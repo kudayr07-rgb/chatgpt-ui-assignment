@@ -1,11 +1,10 @@
 import React from "react";
-import { Box, Paper, Typography, Tooltip, Avatar, IconButton } from "@mui/material";
+import { Box, Paper, Tooltip, Avatar, IconButton } from "@mui/material";
 import { useChat } from "../../context/ChatContext";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import CardRenderer from "../cards/CardRenderer";
 import type { Message } from "../../context/ChatContext";      
 import { AdaptiveCardRenderer } from "../cards/AdaptiveCardRenderer";
 import { SuggestionChips } from "../SuggestionChips";
@@ -56,7 +55,7 @@ function MessageBubble({ message }: Props) {
         {message.content && (
         <ReactMarkdown
           components={{
-            code({ inline, className, children }) {
+            code({ inline, className, children }: any) {
               const match = /language-(\w+)/.exec(className || "");
               const codeString = String(children).replace(/\n$/, "");
 
@@ -124,9 +123,9 @@ function MessageBubble({ message }: Props) {
           </Box>
         )}
 
-          {message.suggestions?.length > 0 && (
+          {(message.suggestions ?? []).length > 0 && (
             <SuggestionChips
-              suggestions={message.suggestions}
+              suggestions={message.suggestions ?? []}
               onSuggestionClick={(text) => sendMessage(text)}
             />
           )}

@@ -1,13 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Box, Typography } from "@mui/material";
 import MessageBubble from "./MessageBubble";
 import { useChat } from "../../context/ChatContext";
 
-type Messages = {
-  id: string;
-  role: "user" | "assistant";
-  content: string;
-};
+// type Messages = {
+//   id: string;
+//   role: "user" | "assistant";
+//   content: string;
+// };
 
 // type Props = {
 //     messages: Messages[];

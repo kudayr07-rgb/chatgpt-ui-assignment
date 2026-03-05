@@ -1,13 +1,11 @@
-import { Box, AppBar, Toolbar, Typography, IconButton, Tooltip } from "@mui/material";
+import { Box, AppBar, Toolbar, Typography, IconButton } from "@mui/material";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import SettingsIcon from "@mui/icons-material/Settings";
-import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import MessageList from "./MessageList";
 import ChatInput from "./ChatInput";
 import Sidebar from "./sidebar/Sidebar";
-import { usePreferences } from "../../context/UserPreferenceContext";
 import  UserPreferencesDialog  from "../UserPreferenceDialog";
 import { SuggestionChips } from "../SuggestionChips";
 import { useChat } from "../../context/ChatContext";
@@ -17,23 +15,17 @@ type Props = {
   mode: "light" | "dark";
 };
 
-type Message = {
-  id: string;
-  role: "user" | "assistant";
-  content: string;
-};
 
 export default function ChatLayout({ mode, toggleTheme }: Props) {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: "1",
-      role: "assistant",
-      content: "Hello! I'm an AI assistant powered by ChatGPT. How can I help you today?"
-    }
-  ]);
+  // const [messages, setMessages] = useState<Message[]>([
+  //   {
+  //     id: "1",
+  //     role: "assistant",
+  //     content: "Hello! I'm an AI assistant powered by ChatGPT. How can I help you today?"
+  //   }
+  // ]);
 
   const { messages: chatMessages, sendMessage } = useChat();
-  const { preferences } = usePreferences();
   const [dialogOpen, setDialogOpen] = useState(false);
   const showSuggestions = chatMessages.length <= 1;
 
@@ -112,7 +104,7 @@ export default function ChatLayout({ mode, toggleTheme }: Props) {
             minHeight: 0
           }}
         >
-          <MessageList messages={chatMessages} />
+          <MessageList />
       </Box>
 
       {showSuggestions && (
@@ -121,10 +113,15 @@ export default function ChatLayout({ mode, toggleTheme }: Props) {
                 role="region"
                 aria-label="Suggested prompts"
               >
-              <SuggestionChips onSuggestionClick={handleSuggestionClick} />
+              <SuggestionChips suggestions={[
+                  "Explain with an example",
+                  "Show related code",
+                  "Summarize this",
+                  "Give real world use cases"
+                ]} onSuggestionClick={handleSuggestionClick} />
             </Box>
       )}
-      <ChatInput onSendMessage={handleSendMessage} />
+      <ChatInput />
       
       
       <UserPreferencesDialog

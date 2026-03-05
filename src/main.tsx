@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { getTheme } from "./theme/theme";
-import {ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+import {ThemeProvider, CssBaseline } from "@mui/material";
 import {useState} from "react";
 import { ChatProvider } from "./context/ChatContext";
 import { UserPreferenceProvider } from './context/UserPreferenceContext';
